@@ -3,7 +3,7 @@ var util = require('util');
 var yeoman = require('yeoman-generator');
 
 
-var ComponentGenerator = yeoman.generators.NamedBase.extend({
+var ComponentGenerator = yeoman.generators.Base.extend({
   promptForConfiguration: function() {
 
     var done = this.async();
@@ -13,7 +13,10 @@ var ComponentGenerator = yeoman.generators.NamedBase.extend({
       message: 'Tell me a litte bit about it.'
     }];
 
+    console.log('pre-prompt');
     this.prompt(prompts, function processAnswers(answers) {
+      console.log('prompting');
+      console.log(prompts);
 
       this.componentName = this.name;
       this.componentDescription = answers.componentDescription;

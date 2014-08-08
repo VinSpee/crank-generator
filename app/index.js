@@ -8,6 +8,7 @@ var chalk = require('chalk');
 
 var CrankGenerator = yeoman.generators.Base.extend({
   init: function () {
+    this.config.save();
     this.pkg = require('../package.json');
 
     this.on('end', function () {
