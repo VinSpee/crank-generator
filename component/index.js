@@ -8,12 +8,12 @@ var ComponentGenerator = yeoman.generators.NamedBase.extend({
 
     var done = this.async();
 
-    var prompts = [{
+    this.prompts = [{
       name: 'componentDescription',
       message: 'Tell me a litte bit about it.'
     }];
 
-    this.prompt(prompts, function processAnswers(answers) {
+    this.prompt(this.prompts, function processAnswers(answers) {
 
       this.componentName = this.name;
       this.componentDescription = answers.componentDescription;
@@ -23,17 +23,18 @@ var ComponentGenerator = yeoman.generators.NamedBase.extend({
   },
 
   init: function () {
-    console.log('You called the component subgenerator with the argument ' + this.name + '.');
+    console.log('Whipping up your ' + this.name + ' component…');
   },
 
   files: function () {
     var context = {
-      component_folder_name: this._.dasherize(this.componentName),
+      component_folder_name: this._.slugify(this.componentName),
       component_name: this._.classify(this.componentName),
       component_description: this.componentDescription
     };
 
-    var compDir = 'app/styles/' + this._.dasherize(this.componentName) + '/';
+
+    var compDir = 'app/styles/' + this._.slugify(this.componentName) + '/';
 
     this.template('_package.json', compDir + 'package.json', context);
     this.template('_index.css', compDir + 'index.css', context);
