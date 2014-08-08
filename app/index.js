@@ -23,6 +23,7 @@ var CrankGenerator = yeoman.generators.Base.extend({
     // Have Yeoman greet the user.
     this.log(yosay('Welcome to the marvelous Crank generator!'));
 
+    var prompts = [];
     this.prompt(prompts, function (props) {
       this.someOption = props.someOption;
 
