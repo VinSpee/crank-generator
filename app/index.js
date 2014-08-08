@@ -34,7 +34,6 @@ var CrankGenerator = yeoman.generators.Base.extend({
   app: function () {
     //this.mkdir('app');
     //this.mkdir('app/templates');
-    yeoman.generator.config.save();
 
     //this.copy('_package.json', 'package.json');
     //this.copy('_bower.json', 'bower.json');
