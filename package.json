@@ -1,6 +1,6 @@
 {
   "name": "generator-crank",
-  "version": "0.1.9",
+  "version": "0.1.91",
   "description": "Yeoman generator",
   "license": "MIT",
   "main": "app/index.js",
@@ -34,3 +34,4 @@
     "yo": ">=1.0.0"
   }
 }
+

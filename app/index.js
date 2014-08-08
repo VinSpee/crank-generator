@@ -8,12 +8,11 @@ var chalk = require('chalk');
 
 var CrankGenerator = yeoman.generators.Base.extend({
   init: function () {
-    this.config.save();
     this.pkg = require('../package.json');
 
     this.on('end', function () {
-      if (!this.options['skip-install']) {
-        //this.installDependencies();
+      if (this.options.install) {
+        this.installDependencies();
       }
     });
   },
@@ -24,25 +23,42 @@ var CrankGenerator = yeoman.generators.Base.extend({
     // Have Yeoman greet the user.
     this.log(yosay('Welcome to the marvelous Crank generator!'));
 
-    var prompts = [];
-    this.prompt(prompts, function (props) {
-      this.someOption = props.someOption;
+    var prompts = [
+      {
+        type: 'input',
+        name: 'componentName',
+        message: 'What\'s the name of your component?'
+      },
+      {
+        type: 'input',
+        name: 'componentDescription',
+        message: 'Tell me a litte bit about it.'
+      }
+    ];
 
+    this.prompt(prompts, function (props) {
+      this.componentName = props.componentName;
+      this.componentDescription = props.componentDescription;
       done();
     }.bind(this));
   },
 
   app: function () {
-    //this.mkdir('app');
-    //this.mkdir('app/templates');
+    console.log('Whipping up your ' + this.name + ' component…');
 
-    //this.copy('_package.json', 'package.json');
-    //this.copy('_bower.json', 'bower.json');
   },
 
   projectfiles: function () {
-    //this.copy('editorconfig', '.editorconfig');
-    //this.copy('jshintrc', '.jshintrc');
+    var context = {
+      component_folder_name: this._.slugify(this.componentName),
+      component_name: this._.classify(this.componentName),
+      component_description: this.componentDescription
+    };
+
+    var compDir = 'app/styles/' + this._.slugify(this.componentName) + '/';
+    this.template('_package.json', compDir + 'package.json', context);
+    this.template('_index.css', compDir + 'index.css', context);
+    this.template('_component.css', compDir + 'lib/' + context.component_folder_name + '.css', context);
   }
 });
 
