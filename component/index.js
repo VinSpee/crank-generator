@@ -8,7 +8,7 @@ var ComponentGenerator = yeoman.generators.NamedBase.extend({
 
     var done = this.async();
 
-    prompts = [{
+    var prompts = [{
       name: 'componentDescription',
       message: 'Tell me a litte bit about it.'
     }];
