@@ -28,14 +28,16 @@ var ComponentGenerator = yeoman.generators.NamedBase.extend({
 
   files: function () {
     var context = {
+      component_folder_name: this._.dasherize(this.componentName),
       component_name: this._.classify(this.componentName),
       component_description: this.componentDescription
     };
 
-    var compDir = 'app/styles/' + this._.slugify(this.componentName) + '/';
+    var compDir = 'app/styles/' + this._.dasherize(this.componentName) + '/';
 
     this.template('_package.json', compDir + 'package.json', context);
     this.template('_index.css', compDir + 'index.css', context);
+    this.template('_component.css', compDir + context.component_folder_name + '.css', context);
   }
 });
 
