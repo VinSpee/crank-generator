@@ -1,5 +1,5 @@
 {
-  "name": "<%= component_name %>",
+  "name": "<%= component_folder_name %>",
   "description": "<%= component_description %>",
   "version": "0.1.0",
   "style": "index.css",
