@@ -3,7 +3,6 @@
  * <%= component_description %>
  */
 
-.<%= component_name %> {
+[data-am-<%= component_name %>] {
 
 }
-
