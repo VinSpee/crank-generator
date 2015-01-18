@@ -32,6 +32,10 @@ module.exports = yeoman.generators.Base.extend({
     }
   },
 
+  installingDeps: function() {
+    this.npmInstall(['react'], { 'saveDev': true });
+  },
+
   writing: {
 
     configTemplates: function() {
@@ -55,6 +59,7 @@ module.exports = yeoman.generators.Base.extend({
       this.template(this.templatePath('_component.jsx'), this.destinationPath(this.context.component_dir + this.context.component_folder_name + '.jsx'), this.context);
 
       if(this.needsStore) {
+        this.npmInstall(['reflux'], { 'saveDev': true });
         this.template(this.templatePath('_component-store.js'), this.destinationPath(this.context.component_dir + 'store/' + this.context.component_folder_name + '.js'), this.context);
         this.template(this.templatePath('_mock.json'), this.destinationPath(this.context.component_dir + 'store/mock.json'), this.context);
       }
