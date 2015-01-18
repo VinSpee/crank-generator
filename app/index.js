@@ -24,11 +24,12 @@ module.exports = yeoman.generators.Base.extend({
       name: 'componentCategory',
       message: 'Which part of the component are you building?',
       choices: [
-        'React',
+        'React Component',
+        'React App',
         'CSS',
         //'HTML'
       ],
-      filter: function(val) { return val.toLowerCase(); }
+      filter: function(val) { return this._.slugify(val); }.bind(this)
     }];
 
     this.prompt(prompts, function(props) {

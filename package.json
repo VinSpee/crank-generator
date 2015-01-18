@@ -15,8 +15,9 @@
   },
   "files": [
     "app",
-    "css:component",
-    "css"
+    "react-component",
+    "css",
+    "react-app"
   ],
   "keywords": [
     "yeoman-generator"
