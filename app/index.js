@@ -24,7 +24,7 @@ module.exports = yeoman.generators.Base.extend({
       name: 'componentCategory',
       message: 'Which part of the component are you building?',
       choices: [
-        //'Javascript',
+        'React',
         'CSS',
         //'HTML'
       ],
