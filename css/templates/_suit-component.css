@@ -1,0 +1,25 @@
+/** @define <%= component_name %>; use strict */
+/*
+ * <%= component_description %>
+ */
+
+:root {
+  --<%= component_name %>-property: value;
+}
+
+.<%= component_name %> {
+
+}
+
+.<%= component_name %>.is-state {
+
+}
+
+
+.<%= component_name %>--modifier {
+
+}
+
+.<%= component_name %>-childMember {
+
+}
